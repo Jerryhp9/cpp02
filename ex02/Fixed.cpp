@@ -66,7 +66,11 @@ bool	Fixed::operator!=(const Fixed& obj) const {
 }
 
 Fixed Fixed::operator+(const Fixed& obj) const {
-	Fixed r; 
+	Fixed r;
+	std::cout << "inside operator+: this=" << this
+    	<< " value=" << this->result
+    	<< ", &obj=" << &obj
+    	<< " obj.value=" << obj.result << '\n';
 	r.setRawBits(this->result + obj.result);
 	return (r);
 }
