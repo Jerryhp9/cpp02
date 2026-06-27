@@ -7,6 +7,8 @@ Fixed::Fixed() {
 
 Fixed::Fixed(const int num) {
 	result = num << frac_bits;
+	std::cout << num << std::endl;
+	std::cout << result << std::endl;
 	std::cout << "Int constructor called" << std::endl;
 }
 
@@ -84,6 +86,9 @@ Fixed Fixed::operator-(const Fixed& obj) const {
 Fixed Fixed::operator*(const Fixed& obj) const {
 	Fixed r;
 	long long tmp = (long long)this->result * obj.result;
+	std::cout << "this:" << this->result << std::endl;
+	std::cout << "obj:" << obj.result << std::endl;
+	std::cout << "tmp:" << tmp << std::endl;
 	r.setRawBits((int)(tmp >> frac_bits));
 	return (r);
 }
@@ -95,27 +100,27 @@ Fixed Fixed::operator/(const Fixed& obj) const {
 	return (r);
 }
 
-Fixed& Fixed::operator++() {
-	++result;
-	return *this;
-}
+// Fixed& Fixed::operator++() {
+// 	++result;
+// 	return *this;
+// }
 
-Fixed Fixed::operator++(int) {
-	Fixed tmp(*this);
-	++result;
-	return tmp;
-}
+// Fixed Fixed::operator++(int) {
+// 	Fixed tmp(*this);
+// 	++result;
+// 	return tmp;
+// }
 
-Fixed& Fixed::operator--() {
-	--result;
-	return *this;
-}
+// Fixed& Fixed::operator--() {
+// 	--result;
+// 	return *this;
+// }
 
-Fixed Fixed::operator--(int) {
-	Fixed tmp(*this);
-	--result;
-	return tmp;
-}
+// Fixed Fixed::operator--(int) {
+// 	Fixed tmp(*this);
+// 	--result;
+// 	return tmp;
+// }
 
 Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;

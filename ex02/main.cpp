@@ -21,6 +21,6 @@ int main() {
     Fixed a(3);
     Fixed b(4);
     std::cout << "call: a.operator+(b)\n";
-    Fixed c = a + b + d; // same as a.operator+(b)
+    Fixed c = a * b * d; // same as a.operator+(b)
     std::cout << "result: " << c.toInt() << '\n';
 }
