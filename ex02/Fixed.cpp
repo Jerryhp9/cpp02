@@ -69,10 +69,6 @@ bool	Fixed::operator!=(const Fixed& obj) const {
 
 Fixed Fixed::operator+(const Fixed& obj) const {
 	Fixed r;
-	std::cout << "inside operator+: this=" << this
-    	<< " value=" << this->result
-    	<< ", &obj=" << &obj
-    	<< " obj.value=" << obj.result << '\n';
 	r.setRawBits(this->result + obj.result);
 	return (r);
 }
@@ -86,9 +82,6 @@ Fixed Fixed::operator-(const Fixed& obj) const {
 Fixed Fixed::operator*(const Fixed& obj) const {
 	Fixed r;
 	long long tmp = (long long)this->result * obj.result;
-	std::cout << "this:" << this->result << std::endl;
-	std::cout << "obj:" << obj.result << std::endl;
-	std::cout << "tmp:" << tmp << std::endl;
 	r.setRawBits((int)(tmp >> frac_bits));
 	return (r);
 }
@@ -100,27 +93,27 @@ Fixed Fixed::operator/(const Fixed& obj) const {
 	return (r);
 }
 
-// Fixed& Fixed::operator++() {
-// 	++result;
-// 	return *this;
-// }
+Fixed& Fixed::operator++() {
+	this->result++;
+	return (*this);
+}
 
-// Fixed Fixed::operator++(int) {
-// 	Fixed tmp(*this);
-// 	++result;
-// 	return tmp;
-// }
+Fixed Fixed::operator++(int) {
+	Fixed tmp = *this;
+	this->result++;
+	return (tmp);
+}
 
-// Fixed& Fixed::operator--() {
-// 	--result;
-// 	return *this;
-// }
+Fixed& Fixed::operator--() {
+	this->result--;
+	return (*this);
+}
 
-// Fixed Fixed::operator--(int) {
-// 	Fixed tmp(*this);
-// 	--result;
-// 	return tmp;
-// }
+Fixed Fixed::operator--(int) {
+	Fixed tmp = *this;
+	this->result--;
+	return (tmp);
+}
 
 Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
@@ -133,4 +126,32 @@ int		Fixed::getRawBits(void) const {
 
 void	Fixed::setRawBits(int const raw) {
 	this->result = raw;
+}
+
+Fixed	Fixed::min(Fixed &a, Fixed &b) {
+	if (a.getRawBits() < b.getRawBits())
+		return (a);
+	else
+		return (b);
+}
+
+Fixed	Fixed::min(Fixed const a, Fixed const b) {
+	if (a.getRawBits() < b.getRawBits())
+		return (a);
+	else
+		return (b);
+}
+
+Fixed	Fixed::max(Fixed &a, Fixed &b) {
+	if (a.getRawBits() > b.getRawBits())
+		return (a);
+	else
+		return (b);
+}
+
+Fixed	Fixed::max(Fixed const a, Fixed const b) {
+	if (a.getRawBits() > b.getRawBits())
+		return (a);
+	else
+		return (b);
 }
