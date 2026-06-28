@@ -30,10 +30,14 @@ class Fixed {
 		Fixed	operator--(int);
 		~Fixed();
 
-		float	toFloat(void)const;
-		int		toInt(void)const;
-		int		getRawBits(void)const;
-		void	setRawBits(int const raw);
+		float			toFloat(void)const;
+		int				toInt(void)const;
+		int				getRawBits(void)const;
+		void			setRawBits(int const raw);
+		static Fixed	min(Fixed &a, Fixed &b);
+		static Fixed	min(Fixed const a, Fixed const b);
+		static Fixed	max(Fixed &a, Fixed &b);
+		static Fixed	max(Fixed const a, Fixed const b);
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& obj);

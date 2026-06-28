@@ -7,6 +7,8 @@ Fixed::Fixed() {
 
 Fixed::Fixed(const int num) {
 	result = num << frac_bits;
+	std::cout << num << std::endl;
+	std::cout << result << std::endl;
 	std::cout << "Int constructor called" << std::endl;
 }
 
@@ -67,10 +69,6 @@ bool	Fixed::operator!=(const Fixed& obj) const {
 
 Fixed Fixed::operator+(const Fixed& obj) const {
 	Fixed r;
-	std::cout << "inside operator+: this=" << this
-    	<< " value=" << this->result
-    	<< ", &obj=" << &obj
-    	<< " obj.value=" << obj.result << '\n';
 	r.setRawBits(this->result + obj.result);
 	return (r);
 }
@@ -96,25 +94,25 @@ Fixed Fixed::operator/(const Fixed& obj) const {
 }
 
 Fixed& Fixed::operator++() {
-	++result;
-	return *this;
+	this->result++;
+	return (*this);
 }
 
 Fixed Fixed::operator++(int) {
-	Fixed tmp(*this);
-	++result;
-	return tmp;
+	Fixed tmp = *this;
+	this->result++;
+	return (tmp);
 }
 
 Fixed& Fixed::operator--() {
-	--result;
-	return *this;
+	this->result--;
+	return (*this);
 }
 
 Fixed Fixed::operator--(int) {
-	Fixed tmp(*this);
-	--result;
-	return tmp;
+	Fixed tmp = *this;
+	this->result--;
+	return (tmp);
 }
 
 Fixed::~Fixed() {
@@ -128,4 +126,32 @@ int		Fixed::getRawBits(void) const {
 
 void	Fixed::setRawBits(int const raw) {
 	this->result = raw;
+}
+
+Fixed	Fixed::min(Fixed &a, Fixed &b) {
+	if (a.getRawBits() < b.getRawBits())
+		return (a);
+	else
+		return (b);
+}
+
+Fixed	Fixed::min(Fixed const a, Fixed const b) {
+	if (a.getRawBits() < b.getRawBits())
+		return (a);
+	else
+		return (b);
+}
+
+Fixed	Fixed::max(Fixed &a, Fixed &b) {
+	if (a.getRawBits() > b.getRawBits())
+		return (a);
+	else
+		return (b);
+}
+
+Fixed	Fixed::max(Fixed const a, Fixed const b) {
+	if (a.getRawBits() > b.getRawBits())
+		return (a);
+	else
+		return (b);
 }
