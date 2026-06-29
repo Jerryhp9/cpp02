@@ -15,6 +15,7 @@ class Point {
 		Point(const float a, const float b);
 		Point(const Point &other);
 		Point& operator=(const Point& other);
+		Fixed	getcoordinate(char type) const;
 		~Point();
 
 };

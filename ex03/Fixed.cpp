@@ -2,22 +2,22 @@
 
 Fixed::Fixed() {
 	result = 0;
-	std::cout << "Default constructor called" << std::endl;
+	// std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int num) {
 	result = num << frac_bits;
-	std::cout << "Int constructor called" << std::endl;
+	// std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float num) {
 	result = roundf(num * (1 << frac_bits));
-	std::cout << "Float constructor called" << std::endl;
+	// std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& other) {
 	result = other.result;
-	std::cout << "Copy constructor called" << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
 }
 
 float Fixed::toFloat(void) const {
@@ -29,7 +29,7 @@ int Fixed::toInt(void) const {
 }
 
 Fixed& Fixed::operator=(const Fixed& other) { 
-	std::cout << "Copy assignment operator called" << std::endl;
+	// std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other) {
 		this->result = other.result;
 	}
@@ -67,10 +67,6 @@ bool	Fixed::operator!=(const Fixed& obj) const {
 
 Fixed Fixed::operator+(const Fixed& obj) const {
 	Fixed r;
-	std::cout << "inside operator+: this=" << this
-    	<< " value=" << this->result
-    	<< ", &obj=" << &obj
-    	<< " obj.value=" << obj.result << '\n';
 	r.setRawBits(this->result + obj.result);
 	return (r);
 }
@@ -82,6 +78,7 @@ Fixed Fixed::operator-(const Fixed& obj) const {
 }
 
 Fixed Fixed::operator*(const Fixed& obj) const {
+	// std::cout << "operator * called" << std::endl;
 	Fixed r;
 	long long tmp = (long long)this->result * obj.result;
 	r.setRawBits((int)(tmp >> frac_bits));
@@ -118,11 +115,11 @@ Fixed Fixed::operator--(int) {
 }
 
 Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
+	// std::cout << "Destructor called" << std::endl;
 }
 
 int		Fixed::getRawBits(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 	return (result);
 }
 
