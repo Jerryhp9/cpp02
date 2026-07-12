@@ -6,17 +6,17 @@ Point& Point::operator=(const Point& other) {
 	return (*this);
 }
 
-Point::Point() : x(0), y(0) {}
+Point::Point() : _x(0), _y(0) {}
 
-Point::Point(const float a, const float b) : x(a), y(b) {}
+Point::Point(const float a, const float b) : _x(a), _y(b) {}
 
-Point::Point(const Point &other) : x(other.x), y(other.y) {}
+Point::Point(const Point &other) : _x(other._x), _y(other._y) {}
 
 Point::~Point() {}
 
 Fixed	Point::getcoordinate(char type) const {
 	if (type == 'x')
-		return (x);
+		return (_x);
 	else
-		return (y);
+		return (_y);
 }
