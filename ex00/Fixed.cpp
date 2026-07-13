@@ -6,8 +6,8 @@ Fixed::Fixed() {
 }
 
 Fixed::Fixed(const Fixed& other) {
+	std::cout << "copy constructor called" << std::endl;
 	_result = other._result;
-	std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed&	Fixed::operator=(const Fixed& other) {
